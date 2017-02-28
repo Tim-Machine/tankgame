@@ -14,7 +14,7 @@ class TANKGAME_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
-public:
+private:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 	ATank* GetControlledTank() const;
@@ -23,4 +23,8 @@ public:
 	void AimTowardsCrosshair();
 	// return an out param, true if hit landscape
 	bool GetSightRayHitLocation(FVector& HitLocation) const;
+	UPROPERTY(EditAnywhere)
+		float CrossHairXLocation = 0.5f;
+	UPROPERTY(EditAnywhere)
+		float CrossHairYlocation = 0.333333f;
 };
