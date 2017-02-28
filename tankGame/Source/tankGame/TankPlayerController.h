@@ -15,8 +15,12 @@ class TANKGAME_API ATankPlayerController : public APlayerController
 	GENERATED_BODY()
 	
 public:
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 	ATank* GetControlledTank() const;
 	
-	void BeginPlay() override;
-	
+	//moves the barrel
+	void AimTowardsCrosshair();
+	// return an out param, true if hit landscape
+	bool GetSightRayHitLocation(FVector& HitLocation) const;
 };
