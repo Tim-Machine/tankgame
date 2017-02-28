@@ -17,5 +17,5 @@ private:
 	void BeginPlay() override;
 	ATank* GetAITank() const;
 	ATank* GetPlayerTank() const;
-	
+	void Tick(float DeltaTime) override;
 };
