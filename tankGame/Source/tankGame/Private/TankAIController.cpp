@@ -8,8 +8,12 @@
 void ATankAIController::BeginPlay() {
 	Super::BeginPlay();
 	auto AITank = GetAITank();
-	
-	UE_LOG(LogTemp, Warning, TEXT("AItank :: %s"), *(AITank->GetName()));
+	if (!AITank) {
+		UE_LOG(LogTemp, Warning, TEXT("no ai tank"));
+	}
+	else {
+		UE_LOG(LogTemp, Warning, TEXT("AItank :: %s"), *(AITank->GetName()));
+	}
 
 }
 
