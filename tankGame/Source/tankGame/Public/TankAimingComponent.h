@@ -21,6 +21,6 @@ protected:
 public:	
 	UTankAimingComponent();
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	void AimAt(FVector HitLocation);
+	void AimAt(FVector HitLocation, float LaunchSpeed);
 	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
 };

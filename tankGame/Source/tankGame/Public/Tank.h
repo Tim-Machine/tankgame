@@ -15,6 +15,8 @@ public:
 	void AimAt(FVector Hitlocation);
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
+	UPROPERTY(EditAnywhere, Category = Firing)
+	float LaunchSpeed = 100000.0f; //todo  find  sensible launch speed
 
 protected:
 	// Called when the game starts or when spawned
