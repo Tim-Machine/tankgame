@@ -6,7 +6,12 @@
 #include "TankBarrel.h"
 #include "TankAimingComponent.generated.h"
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+
+// Forward Declaration
+//class UTankBarrel;
+
+//
+UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class TANKGAME_API UTankAimingComponent : public UActorComponent
 {
 	GENERATED_BODY()
