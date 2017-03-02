@@ -6,6 +6,8 @@
 #include "TankAimingComponent.h"
 #include "Tank.generated.h"
 
+class UTankBarrel;
+
 UCLASS()
 class TANKGAME_API ATank : public APawn
 {
@@ -14,7 +16,7 @@ class TANKGAME_API ATank : public APawn
 public:
 	void AimAt(FVector Hitlocation);
 	UFUNCTION(BlueprintCallable, Category = Setup)
-	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
+	void SetBarrelReference(UTankBarrel* BarrelToSet);
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 100000.0f; //todo  find  sensible launch speed
 
