@@ -16,12 +16,18 @@ class TANKGAME_API ATank : public APawn
 
 public:
 	void AimAt(FVector Hitlocation);
+	
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
+	
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTurretReference(UTankTurret* TurretToSet);
+	
+	UFUNCTION(BlueprintCallable, Category = Firing)
+	void FireProjectile();
+	
 	UPROPERTY(EditAnywhere, Category = Firing)
-	float LaunchSpeed = 100000.0f; //todo  find  sensible launch speed
+	float LaunchSpeed = 4000.0f; 
 
 protected:
 	// Called when the game starts or when spawned
@@ -32,8 +38,6 @@ protected:
 private:
 	// Sets default values for this pawn's properties
 	ATank();
-
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 };
