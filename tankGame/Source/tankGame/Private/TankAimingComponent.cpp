@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "tankGame.h"
+#include "TankBarrel.h"
+#include "TankTurret.h"
 #include "TankAimingComponent.h"
 
 
@@ -26,9 +28,14 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed) {
 		OutLaunchVelocity,
 		StartLocation,
 		HitLocation,
-		LaunchSpeed
+		LaunchSpeed,
+		false,
+		0,
+		0,
+		ESuggestProjVelocityTraceOption::DoNotTrace
 	);
-	
+	auto Time = GetWorld()->GetTimeSeconds();
+
 	if(HaveAimSolution){
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
@@ -37,9 +44,13 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed) {
 }
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel * BarrelToSet) {
+	if (!BarrelToSet) { return; }
 	Barrel = BarrelToSet;
 }
-
+void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet) {
+	if (!Turret) { return; }
+	Turret = TurretToSet;
+}
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection){
 
 	//where are we going to aim at?
@@ -47,5 +58,6 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection){
 	auto AimRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimRotator - BarrelRotator;
 	// rotate turret
-	Barrel->Elevate(5);
+	Barrel->Elevate(DeltaRotator.Pitch);
+	//Turret->Pivot(DeltaRotator.Yaw);
 }
