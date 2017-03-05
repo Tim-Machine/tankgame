@@ -6,13 +6,11 @@
 
 
 
-void UTankTurret::Pivot(float RelativeSpeed) {
-	UE_LOG(LogTemp, Warning, TEXT("Pivot"));
-	RelativeSpeed = FMath::Clamp<float>(RelativeSpeed, MinSpeed, MaxSpeed);
+void UTankTurret::Rotate(float RotationSpeed) {
+	RotationSpeed = FMath::Clamp<float>(RotationSpeed, -1, 1);
 
-	auto ElevationChange = RelativeSpeed * PivotSpeed * GetWorld()->DeltaTimeSeconds;
-	auto RawNewElevation = RelativeRotation.Yaw + ElevationChange;
-	auto ClampedElevation = FMath::Clamp<float>(RawNewElevation, 150, -150);
-
-	SetRelativeRotation(FRotator(0, ClampedElevation, 0));
+	auto RotateChange = RotationSpeed * MaxDegreePerSecond * GetWorld()->DeltaTimeSeconds;
+	auto Rotation = RelativeRotation.Yaw + RotateChange; 
+	
+	SetRelativeRotation(FRotator(0, Rotation, 0));
 }

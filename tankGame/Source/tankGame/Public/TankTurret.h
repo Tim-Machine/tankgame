@@ -11,14 +11,10 @@ UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class TANKGAME_API UTankTurret : public UStaticMeshComponent
 {
 	GENERATED_BODY()
-
 public:
-	void Pivot(float RelativeSpeed);
+	void Rotate(float RotationSpeed);
 
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
-	float PivotSpeed = 10.0f;
-
-	float MinSpeed = -10.0f;
-	float MaxSpeed = 10.0f;
+	float MaxDegreePerSecond = 5;
 };

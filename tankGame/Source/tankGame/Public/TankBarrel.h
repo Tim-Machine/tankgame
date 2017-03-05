@@ -5,9 +5,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "TankBarrel.generated.h"
 
-/**
- * 
- */
+
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class TANKGAME_API UTankBarrel : public UStaticMeshComponent
@@ -22,9 +20,5 @@ private:
 	UPROPERTY(EditAnywhere, Category = Setup)
 	float MaxElevation = 40.0f;
 	UPROPERTY(EditAnywhere, Category = Setup)
-	float MinElevation = 0.0f;
-
-	float MaxRelativeSpeed = 1.0f;
-	float MinRelativeSpeed = -1.0f;
-	
+	float MinElevation = 0.0f;	
 };
